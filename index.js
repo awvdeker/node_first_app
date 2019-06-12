@@ -9,7 +9,7 @@ const app     = express();
 app.use(bodyParser.json());
 
 //import route module and pass your app
-require("./routes/demoRoutes")(app);
+//require("./routes/demoRoutes")(app);
 require("./routes/userRoutes")(app);
 
 //choose what port on which to run the server
