@@ -79,5 +79,22 @@ module.exports = app => {
     res.send(user);
   });
 
+  app.get("/user", (req, res) => {
+    let user;
+    let email = req.query.email;
+
+    jsonfile.readFile(file_path, function(err, content) {
+      for (var i = content.length - 1; i >= 0; i--) {
+        if (content[i].email === email) {
+          console.log("found user" + content[i]);
+          console.log(content[i]);
+          user = content[i];
+        }
+      }
+
+      res.send(user);
+    });
+  });
+
 
 };
