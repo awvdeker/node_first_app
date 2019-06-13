@@ -15,16 +15,15 @@ module.exports = app => {
 
   app.post("/users/new", (req, res) => {
 
-    let email    = req.body.email
-    let username = req.body.username
+    let { email, username } = req.body;
 
-    jsonfile.readFile("./DB/users.json", function(err, content) {
+    jsonfile.readFile(file_path, function(err, content) {
 
-      content.push({ email: email, username: username });
+      content.push({ email, username });
 
       console.log("added " + email + "to DB");
 
-      jsonfile.writeFile("./DB/users.json", content, function(err) {
+      jsonfile.writeFile(file_path, content, function(err) {
         console.log(err);
       });
 
